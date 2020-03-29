@@ -14,4 +14,8 @@ public interface IssueService {
 
     Boolean delete(IssueDto issue);
 
+    Boolean delete(Long id);
+
+    IssueDto update(Long id, IssueDto issue);
+
 }
