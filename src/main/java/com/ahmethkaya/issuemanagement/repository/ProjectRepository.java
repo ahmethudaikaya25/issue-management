@@ -1,8 +1,6 @@
 package com.ahmethkaya.issuemanagement.repository;
 
-import com.ahmethkaya.issuemanagement.dto.ProjectDto;
 import com.ahmethkaya.issuemanagement.entity.Project;
-import com.ahmethkaya.issuemanagement.util.TPage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

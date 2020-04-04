@@ -1,7 +1,6 @@
 package com.ahmethkaya.issuemanagement.service;
 
 import com.ahmethkaya.issuemanagement.dto.ProjectDto;
-import com.ahmethkaya.issuemanagement.entity.Project;
 import com.ahmethkaya.issuemanagement.util.TPage;
 import org.springframework.data.domain.Pageable;
 
@@ -13,9 +12,9 @@ public interface ProjectService {
 
     ProjectDto getById(Long id);
 
-    List<Project> getByProjectCode(String projectCode);
+    ProjectDto getByProjectCode(String projectCode);
 
-    List<Project> getByProjectCodeContains(String projectCode);
+    List<ProjectDto> getByProjectCodeContains(String projectCode);
 
     Boolean delete(ProjectDto project);
 

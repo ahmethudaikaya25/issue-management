@@ -25,7 +25,7 @@ public class TPage<T> {
 
     private List<T> content;
 
-    public void setStat(Page page,List<T> list){
+    public void setStat(Page page, List<T> list) {
 
         this.number = page.getNumber();
         this.size = page.getSize();

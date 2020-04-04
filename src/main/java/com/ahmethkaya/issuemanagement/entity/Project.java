@@ -21,7 +21,7 @@ public class Project extends BaseEntity {
     @Column(name = "project_code", length = 30)
     private String projectCode;
 
-    @Column(name = "project_name", length = 3000)
+    @Column(name = "project_name", length = 300)
     private String projectName;
 
     @JoinColumn(name = "manager_user_id")

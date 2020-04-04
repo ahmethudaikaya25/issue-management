@@ -14,23 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(value = ApiPaths.ProjectCtrl.CTRL,description = "Project Apis")
+@Api(value = ApiPaths.ProjectCtrl.CTRL, description = "Project Apis")
 @RequestMapping("/versioning")
 public class ProjectVersionedApi {
 
     @Autowired
     private ProjectServiceImpl projectService;
 
-    @GetMapping(value = "/{id}",params = "version=1")
-    @ApiOperation(value = "Get By Id Operation V1" , response = ProjectDto.class)
-    public ResponseEntity<ProjectDto> getByIdV1(@PathVariable(value = "id",required = true) Long id){
+    @GetMapping(value = "/{id}", params = "version=1")
+    @ApiOperation(value = "Get By Id Operation V1", response = ProjectDto.class)
+    public ResponseEntity<ProjectDto> getByIdV1(@PathVariable(value = "id", required = true) Long id) {
         ProjectDto projectDto = projectService.getById(id);
         return ResponseEntity.ok(projectDto);
     }
 
-    @GetMapping(value = "/{id}",params = "version=2")
-    @ApiOperation(value = "Get By Id Operation V2",response = ProjectDto.class)
-    public ResponseEntity<ProjectDto> getByIdV2(@PathVariable(value = "id",required = true) Long id){
+    @GetMapping(value = "/{id}", params = "version=2")
+    @ApiOperation(value = "Get By Id Operation V2", response = ProjectDto.class)
+    public ResponseEntity<ProjectDto> getByIdV2(@PathVariable(value = "id", required = true) Long id) {
         ProjectDto projectDto = projectService.getById(id);
         return ResponseEntity.ok(projectDto);
     }

@@ -1,7 +1,6 @@
 package com.ahmethkaya.issuemanagement.entity;
 
 import lombok.*;
-import org.springframework.core.codec.StringDecoder;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -18,7 +18,7 @@ public class IssueServiceImpl implements IssueService {
     private final IssueRepository issueRepository;
     private final ModelMapper modelMapper;
 
-    public IssueServiceImpl(IssueRepository issueRepository,ModelMapper modelMapper) {
+    public IssueServiceImpl(IssueRepository issueRepository, ModelMapper modelMapper) {
         this.issueRepository = issueRepository;
         this.modelMapper = modelMapper;
     }
@@ -26,29 +26,32 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public IssueDto save(IssueDto issue) {
-
-        if(issue.getDate() == null)
+        // Bussiness Logic
+        if (issue.getDate() == null) {
             throw new IllegalArgumentException("Issue Date cannot be null");
+        }
 
-        Issue issueDb = modelMapper.map(issue,Issue.class); //dtodan aldığı verileri issue ile işleştirip döndürür
-        issueDb = issueRepository.save(issueDb); //veritabanına kaydet
-        return modelMapper.map(issueDb,IssueDto.class); //sonra dışarı verirken Dtoyu göndeririz
+        Issue issueEntity = modelMapper.map(issue, Issue.class);
+
+        issueEntity = issueRepository.save(issueEntity);
+
+        issue.setId(issueEntity.getId());
+        return issue;
     }
 
     @Override
     public IssueDto getById(Long id) {
         Issue issue = issueRepository.getOne(id);
-        return modelMapper.map(issue,IssueDto.class);
+        return modelMapper.map(issue, IssueDto.class);
     }
 
     @Override
     public TPage<IssueDto> getAllPageable(Pageable pageable) {
 
         Page<Issue> data = issueRepository.findAll(pageable);
-        TPage page = new TPage<IssueDto>();
-        IssueDto[] dtos = modelMapper.map(data.getContent(),IssueDto[].class);
-        page.setStat(data,Arrays.asList(dtos));
-        return page;
+        TPage<IssueDto> response = new TPage<IssueDto>();
+        response.setStat(data, Arrays.asList(modelMapper.map(data.getContent(), IssueDto[].class)));
+        return response;
     }
 
     @Override

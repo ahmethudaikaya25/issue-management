@@ -12,23 +12,23 @@ import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFacto
 @SpringBootApplication
 public class IssueManagementApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(IssueManagementApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(IssueManagementApplication.class, args);
+    }
 
-	@Bean
-	public ModelMapper getModelMapper(){
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		return modelMapper;
-	}
+    @Bean
+    public ModelMapper getModelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        return modelMapper;
+    }
 
-	@Bean
-	public Jackson2RepositoryPopulatorFactoryBean repositoryPopulator(){
-		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-		factory.setResources(new Resource[]{new ClassPathResource("projects.json")});
-		return factory;
-	}
+    @Bean
+    public Jackson2RepositoryPopulatorFactoryBean repositoryPopulator() {
+        Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
+        factory.setResources(new Resource[]{new ClassPathResource("projects.json")});
+        return factory;
+    }
 
 
 }

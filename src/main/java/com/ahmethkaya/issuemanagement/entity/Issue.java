@@ -20,25 +20,25 @@ public class Issue extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="description",length = 1000)
+    @Column(name = "description", length = 1000)
     private String description;
 
-    @Column(name="details", length = 4000)
+    @Column(name = "details", length = 4000)
     private String details;
 
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @Column(name="issue_status")
+    @Column(name = "issue_status")
     @Enumerated(EnumType.STRING)
     private IssueStatus issueStatus;
 
     @JoinColumn(name = "project_id")
-    @ManyToOne(optional = true,fetch = FetchType.LAZY)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private Project project;
 
-    @JoinColumn(name="assignee_user_id")
+    @JoinColumn(name = "assignee_user_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private User assignee;
     //optional:true assigneeyi vermesen de olur
