@@ -3,7 +3,9 @@ import {ApiService} from "../api.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
-@Injectable
+@Injectable({
+  providedIn: 'root'
+})
 export class ProjectService {
 
   private PROJECT_PATH = "/project";
@@ -12,8 +14,8 @@ export class ProjectService {
 
   }
 
-  getAll(id): Observable<any> {
-    return this.apiService.get(this.PROJECT_PATH).pipe(map(
+  getAll(page): Observable<any> {
+    return this.apiService.get(this.PROJECT_PATH+'/pagination',page).pipe(map(
       res => {
         if (res) {
           return res;

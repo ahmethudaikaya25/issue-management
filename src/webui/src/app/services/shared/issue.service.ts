@@ -3,7 +3,9 @@ import {ApiService} from "../api.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
-@Injectable
+@Injectable({
+  providedIn: 'root'
+})
 export class IssueService {
 
   private ISSUE_PATH = "/issue";
@@ -12,7 +14,7 @@ export class IssueService {
 
   }
 
-  getAll(id): Observable<any> {
+  getAll(): Observable<any> {
     return this.apiService.get(this.ISSUE_PATH).pipe(map(
       res => {
         if (res) {

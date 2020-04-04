@@ -21,6 +21,7 @@ import {DashboardModule} from "./pages/dashboard/dashboard.module";
 import {ProjectModule} from "./pages/project/project.module";
 import {IssueModule} from "./pages/issue/issue.module";
 import {ApiService} from "./services/api.service";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n)', '.json');
@@ -40,6 +41,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     DashboardModule,
     ProjectModule,
     IssueModule,
+    NgxDatatableModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
